@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 20:51:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.Alumno" table="alumnos" catalog="aulas" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="alu_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="carrera" class="aplicacion.modelo.dominio.Carrera" fetch="join">
+            <column name="alu_carrera" not-null="true" />
+        </many-to-one>
+        <many-to-one name="perfil" class="aplicacion.modelo.dominio.Perfil" fetch="join">
+            <column name="alu_perfil" not-null="true" />
+        </many-to-one>
+        <property name="libretaUniversitaria" type="string">
+            <column name="alu_libreta_universitaria" length="10" not-null="true" unique="true" />
+        </property>
+
+    </class>
+</hibernate-mapping>

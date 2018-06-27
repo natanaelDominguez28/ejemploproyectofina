@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 20:51:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.AulaDeMateria" table="aulas_materias" catalog="aulas" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="am_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="aula" class="aplicacion.modelo.dominio.Aula" fetch="join">
+            <column name="am_aula" not-null="true" />
+        </many-to-one>
+        <many-to-one name="docenteAsignado" class="aplicacion.modelo.DocentePorMateria" fetch="select">
+            <column name="am_asignacion_materia" not-null="true" />
+        </many-to-one>
+        <property name="periodo" type="string">
+            <column name="am_periodo" length="45" not-null="true">
+                <comment>{ANUAL-CUATRIMESTRAL-PARCIAL ANUAL-PARCIAL CUATRIMESTRAL}</comment>
+            </column>
+        </property>
+        <property name="comentario" type="string">
+            <column name="am_comentario" length="100" not-null="true" />
+        </property>
+        <property name="dia" type="string">
+            <column name="am_dia" length="45" not-null="true">
+                <comment>{LUNES-MARTES-MIERCOLES-JUEVES-VIERNES-SABADO}</comment>
+            </column>
+        </property>
+        <property name="horarioDesde" type="string">
+            <column name="am_horario_desde" length="10" not-null="true" />
+        </property>
+        <property name="horarioHasta" type="string">
+            <column name="am_horario_hasta" length="10" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="am_estado" not-null="true" />
+        </property>
+        <property name="franjaHoraria" type="string">
+            <column name="am_franja_horaria" length="45" not-null="true">
+                <comment>{MA&#209;ANA-MEDIA MA&#209;ANA-MEDIA TARDE-TARDE-NOCHE}</comment>
+            </column>
+        </property>
+
+    </class>
+</hibernate-mapping>

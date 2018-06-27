@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/template.xhtml">
+
+            <ui:define name="content">
+                <div>
+                    <h:form>
+                        <p:panel id="pnlCarreras" header="CARRERAS">
+                            <p:dataTable id="tblCarreras" var="car" value="#{carreraFormBean.carreras}">
+                                <p:column headerText="NOMBRE">
+                                    <p:outputLabel value="#{car.nombreCarrera}"/>
+                                </p:column>
+                                <p:column headerText="PLAN">
+                                    <p:outputLabel value="#{car.plan}"/>
+                                </p:column>
+                                <p:column headerText="ESTADO">
+                                    <p:outputLabel value="#{car.estado}"/>
+                                </p:column>
+                                <p:column headerText="VER MATERIAS">
+                                    <p:commandButton id="btnVerMaterias" icon="ui-icon-search"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

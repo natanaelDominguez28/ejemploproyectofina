@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputScript library="js" name="calendar_es.js" />
+        <h:outputStylesheet name="./../css/usuarios.css"/>
+        <title>UNIVERSIDAD NACIONAL DE JUJUY - FACULTAD DE INGENIERÍA</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="contenedor">
+            <div id="top">
+                <ui:insert name="top">
+                    <div id="tooplate_header">
+                        <div id="titulo">
+                            <center><h1>FACULTAD DE INGENIERÍA</h1></center>
+                        </div>    
+                    </div>
+
+                    <div id="tooplate_middle">
+                        <h:form rendered="#{loginFormBean.verificarSesion()}">
+                            <p:menubar>
+                                <p:submenu label="Carreras">
+                                    <p:menuitem value="Carreras" outcome="/Carreras/carrera"/>
+                                </p:submenu> 
+                                <p:menuitem value="Datos Personales" outcome="/usuarios/datosUsuario"/>
+                                <p:menuitem value="Volver" outcome="/menu"/>
+                                <f:facet name="options">
+                                    <p:outputLabel value="Bienvenido #{loginFormBean.nombreUsuarioValidado}"/>
+                                    <p:commandButton value="Cerrar Sesión"
+                                                     action="#{loginFormBean.cerrarSesion()}"/>
+                                </f:facet>
+                            </p:menubar>
+                        </h:form>
+                        <p:panel id="panelIniciarSesion" rendered="#{loginFormBean.verificarSesion() eq false}">
+                            <h:form>
+                                <p:outputLabel value="Sesión no Iniciada"/>
+                                <p:commandButton value="Iniciar Sesión" action="/index?faces-redirect=true"/>
+                            </h:form>
+                        </p:panel>
+
+                    </div>
+
+
+
+                </ui:insert>
+            </div>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+                <p:separator/>
+                <p:outputLabel value="GRUPO 9 - ANALISTA PROGRAMADOR UNIVERSITARIO - PROGRAMACIÓN VISUAL 2018"/>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

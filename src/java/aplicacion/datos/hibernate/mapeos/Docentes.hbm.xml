@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 20:51:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.dominio.Docente" table="docentes" catalog="aulas" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="doc_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="perfil" class="aplicacion.modelo.dominio.Perfil" fetch="join">
+            <column name="doc_perfil" not-null="true" />
+        </many-to-one>
+        <property name="legajo" type="string">
+            <column name="doc_legajo" length="45" not-null="true" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="doc_cargo" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="doc_estado" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

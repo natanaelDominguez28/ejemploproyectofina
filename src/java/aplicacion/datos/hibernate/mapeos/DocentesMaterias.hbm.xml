@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/06/2018 20:51:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.modelo.DocentePorMateria" table="docentes_materias" catalog="aulas" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="dm_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="docente" class="aplicacion.modelo.dominio.Docente" fetch="join">
+            <column name="dm_docente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="materia" class="aplicacion.modelo.dominio.Materia" fetch="join">
+            <column name="dm_materia" not-null="true" />
+        </many-to-one>
+        <property name="anio" type="int">
+            <column name="dm_anio" not-null="true" />
+        </property>
+        <property name="estaHabilitado" type="boolean">
+            <column name="dm_habilitado" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="dm_estado" not-null="true" />
+        </property>
+
+    </class>
+</hibernate-mapping>
